@@ -274,7 +274,14 @@ var round = candidates.append("circle")
       .style("font-weight", "bold")
       .text(function(d) { return d.name; });
 
-  
+       // overlap 1
+  label.filter(function(label){
+        return label.name === "Jim Gilmore";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) ) + ")"; })
+
+  label.filter(function(label){
+        return label.name === "George Pataki";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 12) + ")"; })
 
 
   var week = 1;
