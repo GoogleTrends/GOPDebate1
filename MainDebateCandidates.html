@@ -315,18 +315,20 @@ var round = candidates.append("circle")
      
 
     
-      week+=1;
+     
 
     //need to change number according to the number of weeks
       
      if (week !== 13){
+       
+        week+=1;
 
         transition = transition.transition().each("start", start);} 
 
      else if (week === 13){
 
       label.transition()
-        .duration(speed*2)
+        .duration(speed)
         .ease('linear')
         .attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank)) + ")"; })
 
@@ -335,46 +337,46 @@ var round = candidates.append("circle")
     
       label.filter(function(label){
         return label.name === "Jeb Bush";
-      }).transition().duration(speed*2).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
 
       label.filter(function(label){
         return label.name === "Ted Cruz";
-      }).transition().duration(speed*2).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
 
       label.filter(function(label){
         return label.name === "Scott Walker";
-      }).transition().duration(speed*2).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
 
       label.filter(function(label){
         return label.name === "Rand Paul";
-      }).transition().duration(speed*2).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
 
 
         ranking.transition()
-        .duration(speed*2)
+        .duration(speed)
         .ease('linear')
         .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank) ) + ")"; })
         .text(function(d,i) { return  d.values[week].rank; });
 
       round.transition()
-        .duration(speed*2)
+        .duration(speed)
         .ease('linear')
         .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank)) + ")"; });
     
       circleEnd.transition()
-        .duration(speed*2)
+        .duration(speed)
         .ease('linear')
         .attr("cx", function(d) { return x(d.values[week].week); })
         .attr("cy", function(d) { return y(d.values[week].rank); });
 
       clip.transition()
-        .duration(speed*2)
+        .duration(speed)
         .ease('linear')
         .attr("width", x(week+1)+5)
         .attr("height", height*1.2);
 
       timemark.transition()
-         .duration(speed*2)
+         .duration(speed)
          .ease('linear')
          .attr("transform",function(d) { return "translate(" + (x(d.values[week].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
 
