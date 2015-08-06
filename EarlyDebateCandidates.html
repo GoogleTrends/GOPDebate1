@@ -318,7 +318,7 @@ var round = candidates.append("circle")
          .ease('linear')
          .attr("transform",function(d) { return "translate(" + (x(d.values[week].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
 
-          if (week !== 13){
+      if (week !== 13){
        
         week+=1;
 
@@ -348,14 +348,40 @@ var round = candidates.append("circle")
       
 
     
-      week+=1;
+        ranking.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank) ) + ")"; })
+        .text(function(d,i) { return  d.values[week].rank; });
 
-      if (week !== data[0].length){
+      round.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank)) + ")"; });
+    
+      circleEnd.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("cx", function(d) { return x(d.values[week].week); })
+        .attr("cy", function(d) { return y(d.values[week].rank); });
 
-        transition = transition.transition().each("start", start);} 
-     
+      clip.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("width", x(week+1)+5)
+        .attr("height", height*1.2);
+
+      timemark.transition()
+         .duration(speed)
+         .ease('linear')
+         .attr("transform",function(d) { return "translate(" + (x(d.values[week].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
+
+     }
+
       
-    });
+    })
+
+    
 
       
 
