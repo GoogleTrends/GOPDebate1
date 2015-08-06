@@ -402,11 +402,13 @@ var round = candidates.append("circle")
             .call(resize);
 
         d3.select(window).on("resize." + container.attr("#graphic"), resize);
+        
+        // delete the *0.8 to make it fit the window.width
 
         function resize() {
             var targetWidth = parseInt(container.style("width"));
-            svg.attr("width", targetWidth * 0.8);
-            svg.attr("height", Math.round(targetWidth /aspect * 0.8));
+            svg.attr("width", targetWidth);
+            svg.attr("height", Math.round(targetWidth /aspect ));
         }  
     }
 
