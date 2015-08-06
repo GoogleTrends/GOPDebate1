@@ -220,11 +220,7 @@ var circleEnd = candidates.append("circle")
       .style("fill", "#ce3b69")
       .attr("r", 2);
 
- // var timemark = candidates.append("circle")
- //    .attr("cx",function(d) { return x(d.values[0].week); })
- //    .attr("cy",y(0)+20)
- //    .attr("r",3)
- //    .style("fill","grey")
+ 
 var timemark = candidates.append("path")
                   .attr("d", d3.svg.symbol().type("triangle-up"))
                   .style("fill", "grey")
@@ -275,8 +271,6 @@ var round = candidates.append("circle")
       .text(function(d) { return d.name; });
 
   
-
-
   var week = 1;
 
   var transition = d3.transition()
@@ -284,11 +278,12 @@ var round = candidates.append("circle")
     .duration(speed)
     .each("start", function start() {         
 
+     
       label.transition()
         .duration(speed)
         .ease('linear')
-      .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank)) + ")"; })
-      .text(function(d) { return  d.name; });
+        .attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank)) + ")"; })
+       
 
       ranking.transition()
         .duration(speed)
@@ -317,23 +312,80 @@ var round = candidates.append("circle")
          .duration(speed)
          .ease('linear')
          .attr("transform",function(d) { return "translate(" + (x(d.values[week].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
-
-      // timemark.transition()
-      //   .duration(speed)
-      //   .ease('linear')
-      //   .attr("cx", function(d) { return x(d.values[week].week); })
-      //   .attr("cy", y(0) + 20);
-      
+     
 
     
-      week+=1;
+     
 
-      if (week !== data[0].length){
+    //need to change number according to the number of weeks
+      
+     if (week !== 13){
+       
+        week+=1;
 
         transition = transition.transition().each("start", start);} 
-     
+
+     else if (week === 13){
+
+      label.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank)) + ")"; })
+
+    //need to change the names according to the candidates that are in tie
+
+    
+      label.filter(function(label){
+        return label.name === "Jeb Bush";
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
+
+      label.filter(function(label){
+        return label.name === "Ted Cruz";
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
+
+      label.filter(function(label){
+        return label.name === "Scott Walker";
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
+
+      label.filter(function(label){
+        return label.name === "Rand Paul";
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
+
+
+        ranking.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank) ) + ")"; })
+        .text(function(d,i) { return  d.values[week].rank; });
+
+      round.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank)) + ")"; });
+    
+      circleEnd.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("cx", function(d) { return x(d.values[week].week); })
+        .attr("cy", function(d) { return y(d.values[week].rank); });
+
+      clip.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("width", x(week+1)+5)
+        .attr("height", height*1.2);
+
+      timemark.transition()
+         .duration(speed)
+         .ease('linear')
+         .attr("transform",function(d) { return "translate(" + (x(d.values[week].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
+
+     }
+
       
-    });
+    })
+
+    
 
       
 
