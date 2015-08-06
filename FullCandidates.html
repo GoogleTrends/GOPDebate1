@@ -259,7 +259,6 @@ var round = candidates.append("circle")
       .style("font-weight", "bold")
       .text(function(d) { return d.values[0].rank; });
 
-
   var label = candidates.append("text")
       .attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) ) + ")"; })
       .attr("x", 8)
@@ -274,13 +273,46 @@ var round = candidates.append("circle")
       .style("font-weight", "bold")
       .text(function(d) { return d.name; });
 
-  
+  // This is the part to solve overlapping in the start
 
+      // overlap 1
+  label.filter(function(label){
+        return label.name === "Ted Cruz";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) ) + ")"; })
+
+  label.filter(function(label){
+        return label.name === "Rand Paul";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 12) + ")"; })
+
+      //overlap 2
+  label.filter(function(label){
+        return label.name === "Rick Perry";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank)) + ")"; })
+
+  label.filter(function(label){
+        return label.name === "Rick Santorum";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 12) + ")"; })
+
+      // overlap 3. There are three of them, so the you might need to adjust the y-position slightly different from the previous two pairs. 
+
+  label.filter(function(label){
+        return label.name === "Jim Gilmore";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank)) + ")"; })
+
+  label.filter(function(label){
+        return label.name === "George Pataki";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 12) + ")"; })
+
+  label.filter(function(label){
+        return label.name === "Mike Huckabee";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 24) + ")"; })
+ 
+  // end 
 
   var week = 1;
 
   var transition = d3.transition()
-    .delay(500)
+    .delay(800)
     .duration(speed)
     .each("start", function start() {         
 
@@ -344,11 +376,11 @@ var round = candidates.append("circle")
     
       label.filter(function(label){
         return label.name === "Rick Santorum";
-      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank)) + ")"; })
 
       label.filter(function(label){
         return label.name === "Marco Rubio";
-      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 8) + ")"; })
+      }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) + 12) + ")"; })
 
 
 
