@@ -86,7 +86,7 @@ var color = d3.scale.category10();
 var xAxis = d3.svg.axis()
     .scale(x)
     .tickSize(0)
-    .ticks(14)
+    .ticks(16)
     .orient("top");
 
 var xtickLabels = ["8:56 PM EST", "9:04 PM EST", "9:12 PM EST", "9:20 PM EST", "9:28 PM EST", "9:36 PM EST", "9:44 PM EST", "9:52 PM EST", "10:00 PM EST", "10:08 PM EST", "10:16 PM EST", "10:24 PM EST", "10:32 PM EST", "10:40 PM EST", "10:48 PM EST", "10:56 PM EST"];
@@ -357,13 +357,13 @@ var round = candidates.append("circle")
 
     //need to change number according to the number of weeks
       
-     if (week !== 13){
+     if (week !== 16){
        
         week+=1;
 
         transition = transition.transition().each("start", start);} 
 
-     else if (week === 13){
+     else if (week === 16){
 
       label.transition()
         .duration(speed)
@@ -372,7 +372,7 @@ var round = candidates.append("circle")
 
     //need to change the names according to the candidates that are in tie
 
-    
+    /*
       label.filter(function(label){
         return label.name === "Jeb Bush";
       }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
@@ -389,7 +389,7 @@ var round = candidates.append("circle")
         return label.name === "Rand Paul";
       }).transition().duration(speed).ease('linear').attr("transform", function(d) {return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank) - 8) + ")"; })
 
-
+*/
         ranking.transition()
         .duration(speed)
         .ease('linear')
