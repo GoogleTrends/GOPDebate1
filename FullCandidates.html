@@ -324,6 +324,10 @@ var round = candidates.append("circle")
         return label.name === "Ted Cruz";
       }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 12) + ")"; })
 
+    label.filter(function(label){
+        return label.name === "Rand Paul";
+      }).transition().duration(10).attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) + 24) + ")"; })*/
+
 /*
       //overlap 2
   label.filter(function(label){
