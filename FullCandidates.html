@@ -200,33 +200,33 @@ svg.append("g")
 // to assign color for each candidate
   function colorFilter(d){
     if (d.name === "Donald Trump") {
-          return "#330000";
+          return "#C53929";
       } else if (d.name === "Scott Walker"){
-        return "#330033";
+        return "#7B1FA2";
       } else if (d.name === "Chris Christie"){
-        return "#660033";
+        return "#3F51B5";
       } else if (d.name === "Ben Carson"){
-        return "#663333";
+        return "#3367D6";
       } else if (d.name === "Carly Fiorina"){
-        return "#56101E";
+        return "#00796B";
       } else if (d.name === "Jeb Bush"){
-        return "#671424";
+        return "#00BCD4";
       } else if (d.name === "Ted Cruz"){
-        return "#78172A";
+        return "#0B8043";
       } else if (d.name === "Rand Paul"){
-        return "#891A30";
+        return "#8BC34A";
       } else if (d.name === "John Kasich"){
-        return "#9A1D36";
+        return "#FBC02D";
       } else if (d.name === "Marco Rubio"){
-        return "#A6203D";
+        return "#FFEB3B";
       } else if (d.name === "Rick Perry"){
-        return "#BC2442";
+        return "#5D4037";
       } else if (d.name === "Rick Santorum"){
-        return "#CE2748";
+        return "#9E9E9E";
       } else if (d.name === "Bobby Jindal"){
         return "#D83153";
       } else if (d.name === "Lindsey Graham"){
-        return "#DB4361";
+        return "#455A64";
       } else {
         return "#E5768C";}
     }
@@ -473,8 +473,8 @@ var round = candidates.append("circle")
 
         function resize() {
             var targetWidth = parseInt(container.style("width"));
-            svg.attr("width", targetWidth * 0.8);
-            svg.attr("height", Math.round(targetWidth /aspect * 0.8));
+            svg.attr("width", targetWidth);
+            svg.attr("height", Math.round(targetWidth /aspect));
         }  
     }
 
