@@ -199,7 +199,7 @@ svg.append("g")
 
 function colorFilter(d){
     if (d.name === "Foreign Policy") {
-          return "#AFB42B";
+          return "#FF9800";
       } else if (d.name === "Climate Change"){
         return "#00BCD4";
       } else if (d.name === "Immigration"){
@@ -219,11 +219,11 @@ function colorFilter(d){
       } else if (d.name == "Gun Control") { 
           return "#8BC34A";
       } else if (d.name == "National Security") {
-          return "#FF9800";
+          return "#607D8B";
       } else {
         return "#E5768C";}
     }
-
+    
   var path = svg.selectAll(".candidate").append("path")
       .attr("class", "line")
       .attr("d", function(d) { return line(d.values); })
