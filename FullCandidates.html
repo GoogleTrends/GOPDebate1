@@ -198,7 +198,7 @@ svg.append("g")
       .attr("class", "candidate");
 
 // to assign color for each candidate
-  function colorFilter(d){
+function colorFilter(d){
     if (d.name === "Donald Trump") {
           return "#C53929";
       } else if (d.name === "Scott Walker"){
@@ -212,7 +212,7 @@ svg.append("g")
       } else if (d.name === "Jeb Bush"){
         return "#4285F4";
       } else if (d.name === "Ted Cruz"){
-        return "#3367D6";
+        return "#303F9F"; 
       } else if (d.name === "Rand Paul"){
         return "#00BCD4";
       } else if (d.name === "John Kasich"){
@@ -236,7 +236,6 @@ svg.append("g")
       } else {
         return "#E5768C";}
     }
-
 
 
   var path = svg.selectAll(".candidate").append("path")
