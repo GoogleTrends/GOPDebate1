@@ -68,7 +68,7 @@ li{
 
 function drawGrahpics(){
 
-var margin = {top: 100, right: 160, bottom: 10, left: 60},
+var margin = {top: 100, right: 160, bottom: 30, left: 60},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -184,6 +184,16 @@ svg.append("g")
             "stroke-dasharray": ("3, 3")
         })
         .attr("clip-path", function(d) { return "url(#clip)"; });
+
+
+  svg.append("text")
+          .attr("text-anchor","front")
+          .attr("id","credit")
+          .text("Designed by Jieqian Zhang")
+          .style("fill","darkgrey")
+          .style("font-size",9)
+          .attr("x", 635)
+          .attr("y", 390); 
 
 
         

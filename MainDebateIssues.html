@@ -68,7 +68,7 @@ li{
 
 function drawGrahpics(){
 
-var margin = {top: 100, right: 160, bottom: 10, left: 60},
+var margin = {top: 100, right: 160, bottom: 30, left: 60},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -124,6 +124,16 @@ var clip = svg.append("clipPath")
     .attr("y","-20")
     .attr("width", 0)
     .attr("height", height*1.2);
+
+svg.append("text")
+          .attr("text-anchor","front")
+          .attr("id","credit")
+          .text("Designed by Jieqian Zhang")
+          .style("fill","darkgrey")
+          .style("font-size",9)
+          .attr("x", 635)
+          .attr("y", 390); 
+
 
 d3.csv("MainDebateIssues.csv", function(error, data) {
   
